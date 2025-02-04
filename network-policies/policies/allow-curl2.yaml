@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-curl2
+spec:
+  podSelector:
+    matchLabels:
+      app: color-api
+  policyTypes:
+  - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+               kubernetes.io/metadata.name: dev
+          podSelector:
+            matchLabels:
+              app: traffic-generator
+
+# any pod that is within the dev namespace selector will be allowed to go through
