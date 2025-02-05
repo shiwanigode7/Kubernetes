@@ -16,5 +16,8 @@ spec:
           podSelector:
             matchLabels:
               app: traffic-generator
+        - podSelector:
+            matchLabels:
+              app: curl
 
 # any pod that is within the dev namespace selector will be allowed to go through
